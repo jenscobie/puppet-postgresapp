@@ -11,7 +11,7 @@ class postgresapp (
 
   include boxen::config
 
-  package { "Postgresapp-$version":
+  package { "Postgres-$version":
     ensure          => $ensure,
     provider        => 'compressed_app',
     source          => "https://github.com/PostgresApp/PostgresApp/releases/download/$version/Postgres-$version.zip",
