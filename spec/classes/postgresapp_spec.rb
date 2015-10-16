@@ -4,7 +4,7 @@ describe 'Postgresapp' do
   it do
     should contain_package('Postgresapp').with({
       :provider => 'compressed_app',
-      :source   => 'http://postgres-app.s3.amazonaws.com/PostgresApp-9-2-2-0.zip',
+      :source   => 'https://github.com/PostgresApp/PostgresApp/releases/download/9.4.5.0/Postgres-9.4.5.0.zip',
     })
   end
 end
