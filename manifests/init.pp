@@ -4,9 +4,20 @@
 #
 #   include postgresapp
 
-class postgresapp {
-  package { 'Postgresapp':
-    source   => 'https://github.com/PostgresApp/PostgresApp/releases/download/9.4.5.0/Postgres-9.4.5.0.zip',
-    provider => 'compressed_app',
+class postgresapp (
+  $ensure   = 'present',
+  $version = '9.4.5.0'
+) {
+
+  include boxen::config
+
+  package { "Postgresapp-$version":
+    ensure          => $ensure,
+    provider        => 'compressed_app',
+    source          => "https://github.com/PostgresApp/PostgresApp/releases/download/$version/Postgres-$version.zip",
+    install_options => [
+      '--appdir=/Applications',
+      "--binarydir=${boxen::config::bindir}"
+    ]
   }
 }
